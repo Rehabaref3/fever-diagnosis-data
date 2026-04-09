@@ -1,3 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+df = pd.read_csv("TG2fever_dataset.csv")
+plt.style.use('ggplot')
+
+# Graph 1: Previous Medication Distribution (PIE CHART)
+plt.figure(figsize=(7,7))
+df["Previous_Medication"].value_counts().plot(
+    kind="pie",
+    autopct='%1.1f%%',
+    startangle=90)
+
+plt.title("Previous Medication Distribution")
+plt.ylabel("")
+plt.show()
+
 #Implemented by Leen 
 #Includes:
 #Graph 2: Age distribution
