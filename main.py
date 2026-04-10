@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 
 df = pd.read_csv("TG2fever_dataset.csv")
+df = df.head(31)                 
 plt.style.use('ggplot')
 
 # Graph 1: Previous Medication Distribution (PIE CHART)
