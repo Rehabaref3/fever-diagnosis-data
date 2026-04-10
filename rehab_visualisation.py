@@ -3,7 +3,7 @@ import pandas as pd                # For data manipulation and analysis
 import matplotlib.pyplot as plt    # For creating visualizations
 
 # Load the dataset from CSV file
-df = pd.read_csv("enhanced_fever_medicine_recommendation 2.csv")
+df = pd.read_csv("TG2fever_dataset.csv")
 plt.style.use('ggplot')            # Apply a professional plot style
 
 # Creat a new figure with specific size 
