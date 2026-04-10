@@ -1,5 +1,4 @@
 
-
 # Graph 4: Fever Severity Levels (Horizontal Bar Chart)
 # Create a new figure with custom size
 plt.figure(figsize=(8,5))
@@ -7,8 +6,7 @@ plt.figure(figsize=(8,5))
 # Count frequency of each fever severity level and plot as horizontal bars
 df["Fever_Severity"].value_counts().plot(
     kind="barh",
-    color=['#ff7675','#fdcb6e','#55efc4']
-)
+    color=['#ff7675','#fdcb6e','#55efc4'])
 
 # Add title and axis labels
 plt.title("Fever Severity Levels")
@@ -23,7 +21,6 @@ plt.show()
 
 
 # Graph 5: Heart Rate by Fever Severity (Box Plot)
-
 # Create a box plot to show heart rate distribution across severity levels
 box = df.boxplot(
     column="Heart_Rate",
