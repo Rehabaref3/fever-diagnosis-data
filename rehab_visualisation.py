@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt    # For creating visualizations
 
 # Load the dataset from CSV file
 df = pd.read_csv("TG2fever_dataset.csv")
+df = df.head(31)                   # Take only the first 31 rows
 plt.style.use('ggplot')            # Apply a professional plot style
 
 # Creat a new figure with specific size 
