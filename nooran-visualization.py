@@ -99,3 +99,6 @@ def open_graph(fig_num):
         show_text("Figure 4 opened successfully.\nImproved Cleveland dot plot was generated.")
     elif fig_num == 5:
         show_text("Figure 5 opened successfully.\nImproved box plot with raw data points was generated.")
+        = tk.Toplevel(root)
+    win.title(f"Figure {fig_num}")
+    win.geometry("800x650")
