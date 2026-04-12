@@ -129,3 +129,41 @@ def open_graph_window(fig_num):
     win.title(f"Figure {fig_num}")
     win.geometry("750x650")
 
+  # Create and display the selected figure
+    fig = build_figure(fig_num)
+    canvas = FigureCanvasTkAgg(fig, master=win)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True)
+
+    # Create a frame for navigation buttons
+    btn_frame = tk.Frame(win)
+    btn_frame.pack(pady=10)
+
+    # Add Next Figure button if this is not the last figure
+    if fig_num < 5:
+        tk.Button(
+            btn_frame,
+            text="Next Figure",
+            command=lambda: [win.destroy(), open_graph_window(fig_num + 1)]
+        ).pack(side="left", padx=10)
+
+    # Add Close button
+    tk.Button(
+        btn_frame,
+        text="Close",
+        command=win.destroy
+    ).pack(side="left", padx=10)
+
+# Create buttons in the main dashboard
+tk.Button(root, text="Figure 1", command=lambda: open_graph_window(1), width=30).pack(pady=5)
+tk.Button(root, text="Figure 2", command=lambda: open_graph_window(2), width=30).pack(pady=5)
+tk.Button(root, text="Figure 3", command=lambda: open_graph_window(3), width=30).pack(pady=5)
+tk.Button(root, text="Figure 4", command=lambda: open_graph_window(4), width=30).pack(pady=5)
+tk.Button(root, text="Figure 5", command=lambda: open_graph_window(5), width=30).pack(pady=5)
+
+# Add Exit button to close the whole application
+tk.Button(root, text="Exit", command=root.quit, bg="red", fg="white", width=30).pack(pady=15)
+
+# Start the application
+root.mainloop()
+
