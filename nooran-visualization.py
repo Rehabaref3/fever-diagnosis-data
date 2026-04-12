@@ -54,3 +54,7 @@ for i, value in enumerate(severity_counts.values):
 
         for i, cp in enumerate(cumulative_percent.values):
             ax2.text(i, cp + 2, f"{cp:.1f}%", ha="center", fontsize=8)
+
+  # Figure 5: Box Plot with Raw Data Points
+    elif fig_num == 5:
+        severity_order = sorted(df["Fever_Severity"].dropna().unique())
