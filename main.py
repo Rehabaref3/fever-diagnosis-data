@@ -1,21 +1,31 @@
-import pandas as pd
-import matplotlib.pyplot as plt
+# Import required libraries
+import pandas as pd                # For data manipulation and analysis
+import matplotlib.pyplot as plt    # For creating visualizations
 
+# Load the dataset from CSV file
+df = pd.read_csv("FeverDataset1.csv")
+df = df.head(31)                   # Take only the first 31 rows
+plt.style.use('ggplot')            # Apply a professional plot style
 
-df = pd.read_csv("TG2fever_dataset.csv")
-df = df.head(31)                 
-plt.style.use('ggplot')
 
 # Graph 1: Previous Medication Distribution (PIE CHART)
-plt.figure(figsize=(7,7))
-df["Previous_Medication"].value_counts().plot(
-    kind="pie",
-    autopct='%1.1f%%',
-    startangle=90)
 
-plt.title("Previous Medication Distribution")
-plt.ylabel("")
-plt.show()
+# Creat a new figure with specific size 
+plt.figure(figsize=(7,7))          
+med_counts = df["Previous_Medication"].value_counts()    # Count how many patients took each medication
+total = sum(med_counts)                                  # Calculate total number of patients
+
+# Create a custom function to display percentage + actual count
+def autopct_with_numbers(pct):
+    count = int(round(pct * total / 100.0))              # Calculate actual number
+    return f'{pct:.1f}% ({count})'                       # Display like: "33.6% (256)"
+
+# Create the Pie Chart 
+med_counts.plot(kind="pie", autopct=autopct_with_numbers, startangle=90) 
+plt.title("Previous Medication Distribution")            # Add Title
+plt.ylabel("")                                           # Remove the y-axis label (not needed for pie chart)
+plt.show()                                               # Display the chart
+
 
 #Implemented by Leen 
 #Includes:
