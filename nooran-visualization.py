@@ -87,3 +87,7 @@ ax.set_title("Heart Rate Distribution by Fever Severity")
         ax.grid(axis="y", linestyle="--", alpha=0.4)
 
     return fig
+def open_graph(fig_num):
+    if df is None:
+        show_text("Dataset not loaded.")
+        return
