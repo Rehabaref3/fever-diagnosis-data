@@ -75,3 +75,9 @@ for i, value in enumerate(severity_counts.values):
             box.set_alpha(0.35)
             box.set_edgecolor("black")
 
+ for i, (group, color) in enumerate(zip(grouped_data, colors), start=1):
+            jittered_x = [i + ((j - len(group)/2) * 0.02) for j in range(len(group))]
+            ax.scatter(jittered_x, group, alpha=0.8, s=25, color=color, edgecolors="black", linewidths=0.3)
+
+            mean_value = group.mean()
+            ax.text(i + 0.05, mean_value, f"{mean_value:.1f}", fontsize=8)
