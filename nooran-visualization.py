@@ -95,3 +95,7 @@ def open_graph(fig_num):
     if df is None:
         show_text("Dataset not loaded.")
         return
+ if fig_num == 4:
+        show_text("Figure 4 opened successfully.\nImproved Cleveland dot plot was generated.")
+    elif fig_num == 5:
+        show_text("Figure 5 opened successfully.\nImproved box plot with raw data points was generated.")
