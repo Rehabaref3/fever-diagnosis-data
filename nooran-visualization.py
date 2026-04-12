@@ -43,3 +43,6 @@ ax.bar(severity_counts.index, severity_counts.values)
         ax.set_xlabel("Fever Severity")
         ax.set_ylabel("Frequency")
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+
+for i, value in enumerate(severity_counts.values):
+            ax.text(i, value + 0.1, str(value), ha="center", fontsize=9)
