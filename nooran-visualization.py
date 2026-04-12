@@ -62,4 +62,11 @@ for i, value in enumerate(severity_counts.values):
             df[df["Fever_Severity"] == level]["Heart_Rate"].dropna()
             for level in severity_order
         ]
+        colors = ["skyblue", "lightgreen", "salmon", "plum", "khaki"]
 
+        bp = ax.boxplot(
+            grouped_data,
+            patch_artist=True,
+            labels=severity_order,
+            widths=0.5
+        )
