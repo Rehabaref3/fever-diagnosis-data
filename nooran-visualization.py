@@ -118,3 +118,9 @@ def open_graph(fig_num):
 
     btn_frame = tk.Frame(win)
     btn_frame.pack(pady=10)
+
+
+    if fig_num == 4:
+        tk.Button(btn_frame, text="Next Figure", width=15,
+                  command=lambda: [win.destroy(), open_graph(5)]).pack(side="left", padx=10)
+
