@@ -91,3 +91,7 @@ def open_graph(fig_num):
     if df is None:
         show_text("Dataset not loaded.")
         return
+def open_graph(fig_num):
+    if df is None:
+        show_text("Dataset not loaded.")
+        return
