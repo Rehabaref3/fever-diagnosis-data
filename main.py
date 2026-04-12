@@ -21,6 +21,8 @@ text_box.pack(pady=15)
 def show_text(msg):
     text_box.delete("1.0", tk.END)
     text_box.insert(tk.END, msg)
+    print(msg)
+    print("-" * 50)
 
 # Initialize dataset variable
 df = None
@@ -50,16 +52,22 @@ def build_figure(fig_num):
     fig = Figure(figsize=(7, 5), dpi=100)
     ax = fig.add_subplot(111)
 
-    # Figure 1: Pie chart for Previous Medication
+   # Figure 1: Pie chart for Previous Medication
     if fig_num == 1:
+        # Define custom colors: Purple, Pink, Blue
+        custom_colors = ["#a063b8", "#cc4a78", "#5fa8df"]
+        
         df["Previous_Medication"].value_counts().plot(
             kind="pie",
-            autopct='%1.1f%%',
+            autopct=lambda pct: f'{pct:.1f}% ({int(round(pct * sum(df["Previous_Medication"].value_counts()) / 100.0))})',
             startangle=90,
-            ax=ax
+            ax=ax,
+            colors=custom_colors      # Added custom colors
         )
         ax.set_title("Previous Medication Distribution")
         ax.set_ylabel("")
+        ax.text(0.5, -0.05, "Percentage = Medication Distribution | ( ) = Number of Patients", 
+        transform=ax.transAxes, ha='center', fontsize=9, style='italic')   # Text below chart: % = medication, ( ) = patient count
 
 #Implemented by Leen 
 #Includes:
