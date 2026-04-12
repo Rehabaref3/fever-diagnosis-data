@@ -58,3 +58,8 @@ for i, value in enumerate(severity_counts.values):
   # Figure 5: Box Plot with Raw Data Points
     elif fig_num == 5:
         severity_order = sorted(df["Fever_Severity"].dropna().unique())
+ grouped_data = [
+            df[df["Fever_Severity"] == level]["Heart_Rate"].dropna()
+            for level in severity_order
+        ]
+
