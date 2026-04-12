@@ -21,4 +21,12 @@ def show_text(msg):
     print(msg)
     print("-" * 50)
     df = None
+    try:
+    current_folder = os.path.dirname(__file__)
+    file_path = os.path.join(current_folder, "FeverDataset1.csv")
+    df = pd.read_csv(file_path)
+    df = df.head(31)
+    show_text(f"File read successfully.\nRows loaded: {len(df)}")
+except Exception as e:
+    show_text(f"Error reading file:\n{e}")
 
