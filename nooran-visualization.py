@@ -46,3 +46,11 @@ ax.bar(severity_counts.index, severity_counts.values)
 
 for i, value in enumerate(severity_counts.values):
             ax.text(i, value + 0.1, str(value), ha="center", fontsize=9)
+
+  ax2 = ax.twinx()
+        ax2.plot(severity_counts.index, cumulative_percent.values, marker="o", linewidth=2)
+        ax2.set_ylabel("Cumulative Percentage (%)")
+        ax2.set_ylim(0, 110)
+
+        for i, cp in enumerate(cumulative_percent.values):
+            ax2.text(i, cp + 2, f"{cp:.1f}%", ha="center", fontsize=8)
