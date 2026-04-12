@@ -70,3 +70,8 @@ for i, value in enumerate(severity_counts.values):
             labels=severity_order,
             widths=0.5
         )
+        for box, color in zip(bp["boxes"], colors):
+            box.set_facecolor(color)
+            box.set_alpha(0.35)
+            box.set_edgecolor("black")
+
