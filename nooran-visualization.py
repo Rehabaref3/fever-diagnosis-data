@@ -20,3 +20,5 @@ def show_text(msg):
     text_box.insert(tk.END, msg)
     print(msg)
     print("-" * 50)
+    df = None
+
