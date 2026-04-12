@@ -110,3 +110,11 @@ def open_graph(fig_num):
 
     btn_frame = tk.Frame(win)
     btn_frame.pack(pady=10)
+
+    fig = build_figure(fig_num)
+    canvas = FigureCanvasTkAgg(fig, master=win)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True, padx=10, pady=10)
+
+    btn_frame = tk.Frame(win)
+    btn_frame.pack(pady=10)
