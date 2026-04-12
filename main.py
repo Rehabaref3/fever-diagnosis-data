@@ -124,7 +124,7 @@ def open_graph_window(fig_num):
     elif fig_num == 5:
         show_text("Figure 5 opened successfully.\nBox plot for Heart Rate by Fever Severity was generated.")
 
-    # Create a new graph window
+    
     win = tk.Toplevel(root)
     win.title(f"Figure {fig_num}")
     win.geometry("750x650")
