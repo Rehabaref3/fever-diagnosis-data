@@ -7,7 +7,8 @@ elif fig_num == 2:
         bins=10,          # Divide the data into 10 bins (intervals)
         ax=ax             # Draw the plot on the given axis (for GUI or subplot)
     )
-    
+
+
     # Set the title of the graph
     ax.set_title("Age Distribution of Patients")
     
