@@ -33,3 +33,8 @@ def build_figure(fig_num):
     fig = Figure(figsize=(7, 5), dpi=100)
     ax = fig.add_subplot(111)
 
+   # Figure 4: Pareto Chart for Fever Severity
+    if fig_num == 4:
+        severity_counts = df["Fever_Severity"].value_counts().sort_values(ascending=False)
+        cumulative_percent = severity_counts.cumsum() / severity_counts.sum() * 100
+
