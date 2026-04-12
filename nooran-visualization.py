@@ -81,3 +81,9 @@ for i, value in enumerate(severity_counts.values):
 
             mean_value = group.mean()
             ax.text(i + 0.05, mean_value, f"{mean_value:.1f}", fontsize=8)
+ax.set_title("Heart Rate Distribution by Fever Severity")
+        ax.set_xlabel("Fever Severity")
+        ax.set_ylabel("Heart Rate")
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+
+    return fig
