@@ -37,4 +37,9 @@ def build_figure(fig_num):
     if fig_num == 4:
         severity_counts = df["Fever_Severity"].value_counts().sort_values(ascending=False)
         cumulative_percent = severity_counts.cumsum() / severity_counts.sum() * 100
+ax.bar(severity_counts.index, severity_counts.values)
 
+        ax.set_title("Pareto Analysis of Fever Severity Levels", fontsize=14, fontweight="bold")
+        ax.set_xlabel("Fever Severity")
+        ax.set_ylabel("Frequency")
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
