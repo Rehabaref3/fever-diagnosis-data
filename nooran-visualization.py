@@ -34,3 +34,9 @@ try:
     show_text(f"File read successfully.\nRows loaded: {len(df)}")
 except Exception as e:
     show_text(f"Error reading file:\n{e}")
+
+# Function to build figures
+def build_figure(fig_num):
+    fig = Figure(figsize=(7, 5), dpi=100)
+    ax = fig.add_subplot(111)
+
