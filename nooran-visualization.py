@@ -1,5 +1,5 @@
-import os
-import pandas as pd
+import os #Used to handle file paths
+import pandas as pd # Used tp read and process the dataset
 import tkinter as tk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
