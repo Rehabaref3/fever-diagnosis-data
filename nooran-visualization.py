@@ -64,3 +64,9 @@ def build_figure(fig_num):
         ax2.set_ylabel("Cumulative Percentage (%)")
         ax2.set_ylim(0, 110)
 
+
+       # Add percentage labels
+        for i, cp in enumerate(cumulative_percent.values):
+            ax2.text(i, cp + 2, f"{cp:.1f}%", ha="center", fontsize=8)
+
+
