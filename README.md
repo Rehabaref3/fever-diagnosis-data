@@ -17,6 +17,10 @@ The project includes several visualisations to explore the dataset, such as:
 
 In addition to the original group graphs, improved individual visualisations were also developed by group members in separate sections of the repository.
 
+How to Run the Program
+To run the program, make sure that the Python file and the dataset file FeverDataset1.csv are saved in the same folder. Open the folder in Visual Studio Code or another Python environment, then run the Python file. Make sure the required libraries are installed, especially pandas, matplotlib, and tkinter. After running the file, the dashboard window will appear with buttons to open Figure 4 and Figure 5. Each graph will open in a separate window, and the program can be closed using the Exit button.
+
+
 ## Group Contribution
 This project was completed as a group task by:
 
