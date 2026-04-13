@@ -1,74 +1,90 @@
 # Implemented by Leen
+# ================================
+# Import Libraries
+# ================================
 
-# This section includes:
-# Graph 2: Age Distribution (Histogram)
-# Graph 3: Relationship between Age and Heart Rate (Line Graph)
-
-
-# -------------------------------
-# Graph 2: Age Distribution
-# -------------------------------
-
-# Create a figure with a specified size for better visualization
-plt.figure(figsize=(9, 6))
-
-# Plot a histogram to show how patient ages are distributed
-df["Age"].plot(
-    kind="hist",          # Histogram type
-    bins=10,              # Number of intervals (bins)
-    color="#6c5ce7",      # Bar color
-    edgecolor="white",    # Border color between bars
-    linewidth=1.2,        # Thickness of bar edges
-    rwidth=0.9,           # Width of bars (slight spacing between them)
-    alpha=0.85            # Transparency level
-)
-
-# Add title and labels for clarity
-plt.title("Age Distribution of Patients", fontsize=14, fontweight='bold', pad=15)
-plt.xlabel("Age", fontsize=12)
-plt.ylabel("Frequency (Number of Patients)", fontsize=12)
-
-# Add a horizontal grid to improve readability of frequencies
-plt.grid(axis='y', linestyle='--', alpha=0.3)
-
-# Remove unnecessary borders for a cleaner, modern look
-plt.gca().spines['top'].set_visible(False)
-plt.gca().spines['right'].set_visible(False)
-
-# Adjust layout to prevent overlapping elements
-plt.tight_layout()
-
-# Display the histogram
-plt.show()
+import pandas as pd
+import matplotlib.pyplot as plt
+import tkinter as tk
 
 
+# ================================
+# Sample Data
+# ================================
 
-# -------------------------------
-# Graph 3: Age vs Heart Rate
-# -------------------------------
+data = {
+    "Age": [22, 25, 30, 35, 40, 45, 50, 30, 25, 40],
+    "Heart_Rate": [72, 75, 78, 80, 85, 88, 90, 77, 74, 82]
+}
 
-# Sort the dataset by Age to ensure a smooth and logical line progression
-sorted_df = df.sort_values(by="Age")
+df = pd.DataFrame(data)
 
-# Create a new figure for the line graph
-plt.figure(figsize=(8,5))
 
-# Plot Age against Heart Rate using a line graph
-plt.plot(
-    sorted_df["Age"], 
-    sorted_df["Heart_Rate"],
-    marker='o',        # Add markers to highlight each data point
-    linewidth=3,       # Thickness of the line
-    color='#e74c3c'    # Line color
-)
+# ================================
+# Graph 1: Age Distribution (Pie Chart)
+# ================================
 
-# Add title and axis labels
-plt.title("Age vs Heart Rate")
-plt.xlabel("Age")
-plt.ylabel("Heart Rate")
+def show_age_pie():
+    plt.figure(figsize=(7, 7))
 
-# Add grid lines for better readability
-plt.grid(True)
+    age_counts = df["Age"].value_counts()
 
-# Display the line graph
-plt.show()
+    plt.pie(
+        age_counts,
+        labels=age_counts.index,
+        autopct='%1.1f%%',
+        startangle=90,
+        colors=plt.cm.Paired.colors
+    )
+
+    plt.title("Age Distribution of Patients (Pie Chart)")
+    plt.tight_layout()
+    plt.show()
+
+
+# ================================
+# Graph 2: Heart Rate vs Age (Bar Chart - Original)
+# ================================
+
+def show_heart_rate_bar():
+    plt.figure(figsize=(9, 5))
+
+    plt.bar(
+        df["Age"].astype(str),
+        df["Heart_Rate"],
+        color='#e74c3c',
+        alpha=0.8
+    )
+
+    plt.title("Age vs Heart Rate (Bar Chart)")
+    plt.xlabel("Age")
+    plt.ylabel("Heart Rate")
+
+    plt.xticks(rotation=45)
+    plt.grid(axis='y', linestyle='--', alpha=0.3)
+
+    plt.tight_layout()
+    plt.show()
+
+
+# ================================
+# UI Window (Tkinter)
+# ================================
+
+root = tk.Tk()
+root.title("Health Data Visualization")
+root.geometry("400x250")
+
+
+label = tk.Label(root, text="Select Graph", font=("Arial", 14))
+label.pack(pady=20)
+
+
+btn1 = tk.Button(root, text="Age Distribution (Pie)", command=show_age_pie, width=30)
+btn1.pack(pady=10)
+
+btn2 = tk.Button(root, text="Heart Rate (Bar Chart)", command=show_heart_rate_bar, width=30)
+btn2.pack(pady=10)
+
+
+root.mainloop()
