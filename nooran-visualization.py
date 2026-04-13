@@ -88,4 +88,90 @@ def build_figure(fig_num):
             widths=0.5
         )
 
+ # Apply colors
+        for box, color in zip(bp["boxes"], colors):
+            box.set_facecolor(color)
+            box.set_alpha(0.35)
+            box.set_edgecolor("black")
+
+        # Overlay raw data points
+        for i, (group, color) in enumerate(zip(grouped_data, colors), start=1):
+            jittered_x = [i + ((j - len(group) / 2) * 0.02) for j in range(len(group))]
+            ax.scatter(
+                jittered_x,
+                group,
+                alpha=0.8,
+                s=25,
+                color=color,
+                edgecolors="black",
+                linewidths=0.3
+            )
+
+            # Display mean value
+            mean_value = group.mean()
+            ax.text(i + 0.05, mean_value, f"{mean_value:.1f}", fontsize=8)
+
+        ax.set_title("Heart Rate Distribution by Fever Severity")
+        ax.set_xlabel("Fever Severity")
+        ax.set_ylabel("Heart Rate")
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+
+    return fig
+
+
+# Function to open graph in a new window
+def open_graph(fig_num):
+    if df is None:
+        show_text("Dataset not loaded.")
+        return
+
+    # Display status message
+    if fig_num == 4:
+        show_text("Figure 4 opened successfully.\nImproved Pareto chart for fever severity was generated.")
+    elif fig_num == 5:
+        show_text("Figure 5 opened successfully.\nImproved box plot with raw data points was generated.")
+
+    # Create new window for graph
+    win = tk.Toplevel(root)
+    win.title(f"Figure {fig_num}")
+    win.geometry("800x650")
+
+    # Build and display figure
+    fig = build_figure(fig_num)
+    canvas = FigureCanvasTkAgg(fig, master=win)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill="both", expand=True, padx=10, pady=10)
+
+    # Frame for buttons
+    btn_frame = tk.Frame(win)
+    btn_frame.pack(pady=10)
+
+    # Next Figure button
+    if fig_num == 4:
+        tk.Button(
+            btn_frame,
+            text="Next Figure",
+            width=15,
+            command=lambda: [win.destroy(), open_graph(5)]
+        ).pack(side="left", padx=10)
+
+    # Close button
+    tk.Button(
+        btn_frame,
+        text="Close",
+        width=15,
+        command=win.destroy
+    ).pack(side="left", padx=10)
+
+
+# Buttons to open figures
+tk.Button(root, text="Open Figure 4", width=25, height=2, command=lambda: open_graph(4)).pack(pady=8)
+tk.Button(root, text="Open Figure 5", width=25, height=2, command=lambda: open_graph(5)).pack(pady=8)
+
+# Exit button
+tk.Button(root, text="Exit", width=25, height=2, bg="red", fg="white", command=root.quit).pack(pady=12)
+
+# Start the GUI loop
+root.mainloop()
+
 
