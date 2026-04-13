@@ -68,5 +68,16 @@ def build_figure(fig_num):
        # Add percentage labels
         for i, cp in enumerate(cumulative_percent.values):
             ax2.text(i, cp + 2, f"{cp:.1f}%", ha="center", fontsize=8)
+            
+     # Figure 5: Box Plot with Raw Data Points
+    if fig_num == 5:
+        severity_order = sorted(df["Fever_Severity"].dropna().unique())
+
+         grouped_data = [
+            df[df["Fever_Severity"] == level]["Heart_Rate"].dropna()
+            for level in severity_order
+        ]
+
+
 
 
