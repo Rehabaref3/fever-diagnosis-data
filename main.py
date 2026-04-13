@@ -77,7 +77,8 @@ def build_figure(fig_num):
 #Graph 3: Age vs heart rate 
 
 # Graph 2: Age Distribution (Histogram)
-plt.figure(figsize=(9, 6))
+elif fig_num == 2:
+     plt.figure(figsize=(9, 6))
 
 df["Age"].plot(
     kind="hist",
@@ -100,9 +101,10 @@ plt.show()
 
 
 # Graph 3: Age vs Heart Rate (LINE GRAPH)
-sorted_df = df.sort_values(by="Age")
-plt.figure(figsize=(8,5))
-plt.plot(sorted_df["Age"], sorted_df["Heart_Rate"],
+elif fig_num == 3:
+   sorted_df = df.sort_values(by="Age")
+    plt.figure(figsize=(8,5))
+     plt.plot(sorted_df["Age"], sorted_df["Heart_Rate"],
          marker='o',
          linewidth=3,
          color='#e74c3c')
