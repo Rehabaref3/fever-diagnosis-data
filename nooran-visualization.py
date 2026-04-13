@@ -127,3 +127,6 @@ tk.Button(root, text="Open Figure 4", width=25, height=2, command=lambda: open_g
 tk.Button(root, text="Open Figure 5", width=25, height=2, command=lambda: open_graph(5)).pack(pady=8)
 tk.Button(root, text="Exit", width=25, height=2, bg="red", fg="white", command=root.quit).pack(pady=12)
 
+# End of improved visualisation section
+root.mainloop()
+
