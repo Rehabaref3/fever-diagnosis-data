@@ -80,14 +80,14 @@ def build_figure(fig_num):
 elif fig_num == 2:
      plt.figure(figsize=(9, 6))
 
-df["Age"].plot(
-    kind="hist",
-    bins=10,
-    color="#6c5ce7",
-    edgecolor="white",
-    linewidth=1.2,
-    rwidth=0.9,
-    alpha=0.85
+    df["Age"].plot(
+     kind="hist",
+     bins=10,
+     color="#6c5ce7",
+     edgecolor="white",
+     linewidth=1.2,
+     rwidth=0.9,
+     alpha=0.85
 )
 plt.title("Age Distribution of Patients", fontsize=14, fontweight='bold', pad=15)
 plt.xlabel("Age", fontsize=12)
