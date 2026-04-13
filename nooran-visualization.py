@@ -17,19 +17,20 @@ title.pack(pady=12)
 text_box = tk.Text(root, height=7, width=60)
 text_box.pack(pady=10)
 def show_text(msg):
-    text_box.delete("1.0", tk.END)
-    text_box.insert(tk.END, msg)
-    print(msg)
+    text_box.delete("1.0", tk.END)  # Clear previous text
+    text_box.insert(tk.END, msg)  # Insert new message
+    print(msg)  # Print to console for debugging
     print("-" * 50)
-    df = None
+    
+    df = None  # Initialize dataset variable globally
     try:
-    current_folder = os.path.dirname(__file__)
-    file_path = os.path.join(current_folder, "FeverDataset1.csv")
+    current_folder = os.path.dirname(__file__) # Get current script directory
+    file_path = os.path.join(current_folder, "FeverDataset1.csv")  # Build full file path
     df = pd.read_csv(file_path)
     df = df.head(31)
     show_text(f"File read successfully.\nRows loaded: {len(df)}")
 except Exception as e:
-    show_text(f"Error reading file:\n{e}")
+    show_text(f"Error reading file:\n{e}") # Display error message
 def build_figure(fig_num):
     fig = Figure(figsize=(7, 5), dpi=100)
     ax = fig.add_subplot(111)
