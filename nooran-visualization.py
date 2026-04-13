@@ -1,10 +1,11 @@
 import os #Used to handle file paths
 import pandas as pd # Used tp read and process the dataset
-import tkinter as tk
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import tkinter as tk   # GUI library for creating the dashboard window
+from matplotlib.figure import Figure # Used to create plots
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg  # Embeds plots into Tkinter
 
 # Improved visualisations using the same dataset variables
+# Create main application window
 
 root = tk.Tk()
 root.title("Improved Visualisation Dashboard")
