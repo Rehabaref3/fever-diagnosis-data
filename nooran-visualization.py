@@ -123,4 +123,7 @@ def open_graph(fig_num):
     if fig_num == 4:
         tk.Button(btn_frame, text="Next Figure", width=15,
                   command=lambda: [win.destroy(), open_graph(5)]).pack(side="left", padx=10)
+tk.Button(root, text="Open Figure 4", width=25, height=2, command=lambda: open_graph(4)).pack(pady=8)
+tk.Button(root, text="Open Figure 5", width=25, height=2, command=lambda: open_graph(5)).pack(pady=8)
+tk.Button(root, text="Exit", width=25, height=2, bg="red", fg="white", command=root.quit).pack(pady=12)
 
