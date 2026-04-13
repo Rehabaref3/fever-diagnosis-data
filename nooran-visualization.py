@@ -159,9 +159,13 @@ def open_graph(fig_num):
     canvas.draw()
     canvas.get_tk_widget().pack(fill="both", expand=True, padx=10, pady=10)
 
+ # Navigation frame
+    # Groups buttons logically for better UI structure
     btn_frame = tk.Frame(win)
     btn_frame.pack(pady=10)
 
+  # Navigation button to next figure
+    # Improves user flow by allowing sequential exploration of visualisations
     fig = build_figure(fig_num)
     canvas = FigureCanvasTkAgg(fig, master=win)
     canvas.draw()
@@ -170,13 +174,22 @@ def open_graph(fig_num):
     btn_frame = tk.Frame(win)
     btn_frame.pack(pady=10)
 
-
+ # Navigation button to next figure
+    # Improves user flow by allowing sequential exploration of visualisations
     if fig_num == 4:
         tk.Button(btn_frame, text="Next Figure", width=15,
                   command=lambda: [win.destroy(), open_graph(5)]).pack(side="left", padx=10)
+
+# Buttons to open figures
+# Large buttons improve accessibility and usability
 tk.Button(root, text="Open Figure 4", width=25, height=2, command=lambda: open_graph(4)).pack(pady=8)
 tk.Button(root, text="Open Figure 5", width=25, height=2, command=lambda: open_graph(5)).pack(pady=8)
+# Exit button
+# Clearly styled (red) to indicate termination action
 tk.Button(root, text="Exit", width=25, height=2, bg="red", fg="white", command=root.quit).pack(pady=12)
+
+# Start the GUI loop
+# Keeps the application running and responsive to user interaction
 
 # End of improved visualisation section
 root.mainloop()
