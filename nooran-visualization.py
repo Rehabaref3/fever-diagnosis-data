@@ -78,6 +78,14 @@ def build_figure(fig_num):
             for level in severity_order
         ]
 
+         colors = ["skyblue", "lightgreen", "salmon", "plum", "khaki"]
 
+        # Create boxplot
+        bp = ax.boxplot(
+            grouped_data,
+            patch_artist=True,
+            labels=severity_order,
+            widths=0.5
+        )
 
 
