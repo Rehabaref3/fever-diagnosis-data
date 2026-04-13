@@ -31,14 +31,21 @@ def show_text(msg):
     show_text(f"File read successfully.\nRows loaded: {len(df)}")
 except Exception as e:
     show_text(f"Error reading file:\n{e}") # Display error message
-def build_figure(fig_num):
+
+# Function to build different figures based on figure number
+def build_figure(fig_num): # Create figure object
     fig = Figure(figsize=(7, 5), dpi=100)
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(111) # Add subplot
+
 
    # Figure 4: Pareto Chart for Fever Severity
     if fig_num == 4:
+          # Count frequency of each severity level
         severity_counts = df["Fever_Severity"].value_counts().sort_values(ascending=False)
+         # Calculate cumulative percentage for Pareto analysis
         cumulative_percent = severity_counts.cumsum() / severity_counts.sum() * 100
+        
+         # Create bar chart
 ax.bar(severity_counts.index, severity_counts.values)
 
         ax.set_title("Pareto Analysis of Fever Severity Levels", fontsize=14, fontweight="bold")
@@ -46,19 +53,30 @@ ax.bar(severity_counts.index, severity_counts.values)
         ax.set_ylabel("Frequency")
         ax.grid(axis="y", linestyle="--", alpha=0.4)
 
+  # Add value labels on bars
+# This improves readability by allowing users to see exact frequencies
+        # without estimating from the y-axis (enhances data transparency)
 for i, value in enumerate(severity_counts.values):
             ax.text(i, value + 0.1, str(value), ha="center", fontsize=9)
-
+    
+   # Create secondary axis for cumulative percentage
+        # A second axis is used to combine two related metrics (frequency + cumulative %)
+        # which is a key feature of a Pareto chart (supports decision-making analysis)
   ax2 = ax.twinx()
         ax2.plot(severity_counts.index, cumulative_percent.values, marker="o", linewidth=2)
         ax2.set_ylabel("Cumulative Percentage (%)")
         ax2.set_ylim(0, 110)
 
+ # Add percentage labels
+        # Displaying cumulative percentages helps identify the 80/20 rule visually
         for i, cp in enumerate(cumulative_percent.values):
             ax2.text(i, cp + 2, f"{cp:.1f}%", ha="center", fontsize=8)
 
   # Figure 5: Box Plot with Raw Data Points
     elif fig_num == 5:
+        # Extract and sort severity levels to ensure consistent ordering in the plot
+        # Sorting improves interpretability and avoids random category placement
+
         severity_order = sorted(df["Fever_Severity"].dropna().unique())
  grouped_data = [
             df[df["Fever_Severity"] == level]["Heart_Rate"].dropna()
